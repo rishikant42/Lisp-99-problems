@@ -7,7 +7,7 @@
               ((eq? (car pkg) (car rest)) (loop (cdr rest) (cons (car rest) pkg))) 
               (else (cons pkg (loop (cdr rest) (list (car rest))))))))))
 
-(define (encode items)
+(define (encode-modified items)
   (let ((pack-items (pack items)))
     (map (lambda (item)
            (if (= (length item) 1)
