@@ -1,0 +1,6 @@
+(define (slice items i k)
+  (define (sub result item n)
+    (cond ((> n k) result)
+          ((>= n i) (sub (append result (list (car item))) (cdr item) (+ n 1)))
+          (else (sub result (cdr item) (+ n 1)))))
+  (sub '() items 1))

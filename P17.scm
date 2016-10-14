@@ -1,0 +1,8 @@
+(define (split items n)
+  (define (sub result item counter)
+    (if (= counter 0)
+      (list result item)
+      (sub (append result (list (car item))) 
+           (cdr item) 
+           (- counter 1))))
+  (sub '() items n))
