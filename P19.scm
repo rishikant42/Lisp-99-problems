@@ -1,0 +1,25 @@
+(define (rotate items n)
+  (if (>= n 0)
+    (positive '() items n)
+    (negative '() (reverse items) n)))
+
+(define (positive result item counter)
+  (if (= counter 0)
+    (append item result)
+    (positive (append result (list (car item))) 
+              (cdr item) 
+              (- counter 1))))
+
+(define (negative result item counter)
+  (if (= counter 0)
+    (append (reverse result) (reverse item))
+    (negative (append result (list (car item))) 
+              (cdr item) 
+              (+ counter 1))))
+
+(define (reverse items)
+  (define (iter item result)
+    (if (null? item)
+      result
+      (iter (cdr item) (cons (car item) result))))
+  (iter items '()))
