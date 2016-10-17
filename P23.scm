@@ -39,12 +39,13 @@
 
 ;;;;;;;;;;;;;;;;;;;Alternate (All element of resultant list will be distinct) ;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (define (rnd-select2 items n)
   (define (iter item result count)
-    (let ((rand-no (+ 1 (random (length item)))))
-      (let ((rand-elem (element-at item rand-no)))
-        (if (= count 0)
-          result
-          (iter (remove rand-elem item) (cons rand-elem result) (- count 1))))))
+    (if (= (length item) 0)
+      result
+      (let ((rand-no (+ 1 (random (length item)))))
+        (let ((rand-elem (element-at item rand-no)))
+          (if (= count 0)
+            result
+            (iter (remove rand-elem item) (cons rand-elem result) (- count 1)))))))
   (iter items '() n))
