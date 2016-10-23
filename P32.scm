@@ -1,6 +1,6 @@
 (define (gcd a b)
-  (let ((a (abs a))
-        (b (abs b)))
-    (if (= b 0)
-      a
-      (gcd b (remainder a b)))))
+  (define (helper x y)
+    (if (= y 0)
+      x
+      (gcd y (remainder x y))))
+  (helper (abs a) (abs b)))
